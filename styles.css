@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100%;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: 250px;
+    gap: 12px;
+    padding: 12px;
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+.card {
+    background-color: aqua;
+    border-radius: 20px;
+    padding: 8px;
+}

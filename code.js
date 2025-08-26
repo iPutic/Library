@@ -8,12 +8,7 @@ function Book(title, author, pages, read) {
     this.title = title,
     this.author = author,
     this.pages = pages,
-    this.read = read,
-
-    this.info = function() {
-        let readStatus = this.read ? "already read" : "not read yet";
-        return `${this.title} by ${this.author}, ${this.pages} pages, ${readStatus}`;
-    }
+    this.read = read
 }
 
 function addBookToLibrary() {
@@ -31,3 +26,41 @@ const theLightningThief = new Book("The Lightning Thief", "Rick Riordan", 377, f
 const mrPresident = new Book("Mr. President", "Miguel Ángel Asturias", 320, false);
 
 myLibrary.push(theHobbit, islandsInTheNet, theLightningThief, mrPresident);
+
+const libraryContainer = document.querySelector(".content");
+
+myLibrary.forEach(book => {
+
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    const bookTitle = document.createElement("h2");
+    bookTitle.textContent = book.title;
+
+    const bookAuthor = document.createElement("h2");
+    bookAuthor.classList.add("author");
+    bookAuthor.textContent = book.author;
+
+    const bookPages = document.createElement("p")
+    bookPages.textContent = `${book.pages} pages`;
+
+    const bookId = document.createElement ("p")
+    bookId.textContent = `ID: ${book.id}`
+
+    const bookStatus = document.createElement ("p")
+    if (book.read === true) {
+        bookAuthor.classList.add("read");
+        bookStatus.textContent = "Read";
+    } else if (book.read != true) {
+        bookAuthor.classList.add("toRead");
+        bookStatus.textContent = "Not read yet";
+    }
+
+    card.appendChild(bookTitle);
+    card.appendChild(bookAuthor);
+    card.appendChild(bookPages);
+    card.appendChild(bookId);
+    card.appendChild(bookStatus);
+
+    libraryContainer.appendChild(card);
+})
