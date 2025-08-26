@@ -37,7 +37,7 @@ myLibrary.forEach(book => {
     const bookTitle = document.createElement("h2");
     bookTitle.textContent = book.title;
 
-    const bookAuthor = document.createElement("h2");
+    const bookAuthor = document.createElement("h3");
     bookAuthor.classList.add("author");
     bookAuthor.textContent = book.author;
 
@@ -46,13 +46,14 @@ myLibrary.forEach(book => {
 
     const bookId = document.createElement ("p")
     bookId.textContent = `ID: ${book.id}`
+    bookId.classList.add("id")
 
     const bookStatus = document.createElement ("p")
     if (book.read === true) {
-        bookAuthor.classList.add("read");
+        bookStatus.classList.add("read");
         bookStatus.textContent = "Read";
     } else if (book.read != true) {
-        bookAuthor.classList.add("toRead");
+        bookStatus.classList.add("toRead");
         bookStatus.textContent = "Not read yet";
     }
 
@@ -63,4 +64,24 @@ myLibrary.forEach(book => {
     card.appendChild(bookStatus);
 
     libraryContainer.appendChild(card);
+})
+
+function applyTheme(theme) {
+    document.body.classList.remove('light', 'dark');
+
+    setTimeout(() => {
+        document.body.classList.add(theme);
+        localStorage.setItem('theme', theme);
+    }, 50);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme) {
+        applyTheme(savedTheme);
+    } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        applyTheme(prefersDark ? 'dark' : 'light');
+    }
 })
