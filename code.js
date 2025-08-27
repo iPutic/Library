@@ -31,9 +31,20 @@ function renderLibrary() {
     const libraryContainer = document.querySelector(".content");
     libraryContainer.innerHTML = "";
 
+    const addCard = document.createElement("div");
+    addCard.classList.add("card", "add-card");
+    addCard.innerHTML = `<button>+</button>`;
+    libraryContainer.appendChild(addCard);
+
+    addCard.querySelector("button").addEventListener("click", () => {
+        addBookToLibrary();
+        renderLibrary();
+    });
+
     myLibrary.forEach(book => {
         const card = document.createElement("div");
         card.classList.add("card");
+        card.dataset.id = book.id;
 
         const bookTitle = document.createElement("h2");
         bookTitle.textContent = book.title;
@@ -62,7 +73,7 @@ function renderLibrary() {
     });
 }
 
-renderLibrary();
+renderLibrary()
 
 function applyTheme(theme) {
     document.body.classList.remove('light', 'dark');
