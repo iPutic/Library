@@ -11,6 +11,10 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
+Book.prototype.toggleRead = function() {
+    this.read = !this.read;
+};
+
 const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
 const islandsInTheNet = new Book("Islands in the Net", "Bruce Sterling", 396, true);
 const theLightningThief = new Book("The Lightning Thief", "Rick Riordan", 377, false);
@@ -77,7 +81,7 @@ function renderLibrary() {
         btnRead.textContent = "Change Status!";
         btnRead.classList.add("changeStatus");
         btnRead.addEventListener("click", () => {
-            book.read = !book.read;
+            book.toggleRead(); 
             renderLibrary();
         })
 
