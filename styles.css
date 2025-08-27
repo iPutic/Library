@@ -114,3 +114,93 @@ dialog[open] {
   z-index: 100;
   overflow: hidden;
 }
+
+dialog#addBookModal {
+    border: none;
+    border-radius: 20px;
+    padding: 24px 32px;
+    background-color: var(--card-bg);
+    color: var(--card-text);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    width: 90%;
+    max-width: 400px;
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+dialog#addBookModal h2 {
+    margin-bottom: 16px;
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+dialog#addBookModal form label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    font-weight: 500;
+    color: var(--card-subtext);
+}
+
+dialog#addBookModal form input[type="text"],
+dialog#addBookModal form input[type="number"] {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+dialog#addBookModal form input[type="text"]:focus,
+dialog#addBookModal form input[type="number"]:focus {
+    border-color: #1e90ff;
+}
+
+dialog#addBookModal form input[type="checkbox"] {
+    transform: scale(1.2);
+    margin-left: 4px;
+    vertical-align: middle;
+}
+
+dialog#addBookModal form menu {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+dialog#addBookModal form button {
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+dialog#addBookModal form button[type="submit"] {
+    background-color: #1e90ff;
+    color: white;
+}
+
+dialog#addBookModal form button[type="submit"]:hover {
+    background-color: #0d6efd;
+    transform: translateY(-2px);
+}
+
+dialog#addBookModal form button[type="reset"] {
+    background-color: #ccc;
+    color: #1b1f23;
+}
+
+dialog#addBookModal form button[type="reset"]:hover {
+    background-color: #b3b3b3;
+    transform: translateY(-2px);
+}
+
+dialog::backdrop {
+    background-color: rgba(0,0,0,0.4);
+}
