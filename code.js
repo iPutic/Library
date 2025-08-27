@@ -2,22 +2,13 @@ const myLibrary = [];
 
 function Book(title, author, pages, read) {
     if (!new.target) {
-        throw Error("You must use the 'new' operator to call the constructor")
+        throw Error("You must use the 'new' operator to call the constructor");
     }
     this.id = crypto.randomUUID();
-    this.title = title,
-    this.author = author,
-    this.pages = pages,
-    this.read = read
-}
-
-function addBookToLibrary() {
-    let title = prompt ("Enter the title of the book", "");
-    let author = prompt ("Enter the title of the book", "");
-    let pages = prompt ("Enter the title of the book", "");
-    let read = confirm("Confirm if read cancle if not");
-    let book = new Book(title, author, pages, read);
-    myLibrary.push(book);
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
 }
 
 const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
@@ -32,7 +23,6 @@ function renderLibrary() {
     libraryContainer.innerHTML = "";
 
     const dialog = document.querySelector("#addBookModal");
-    const form = document.querySelector("#addBookForm");
 
     const addCard = document.createElement("div");
     addCard.classList.add("card", "addCard");
@@ -40,10 +30,6 @@ function renderLibrary() {
 
     addCard.addEventListener("click", () => {
         dialog.showModal();
-    });
-
-    form.querySelector("button[type='reset']").addEventListener("click", () => {
-        dialog.close();
     });
 
     libraryContainer.appendChild(addCard);
@@ -67,7 +53,7 @@ function renderLibrary() {
         bookId.classList.add("id");
 
         const bookStatus = document.createElement("p");
-        if (book.read) {
+        if (book.read === "on" || book.read === true) {
             bookStatus.classList.add("read");
             bookStatus.textContent = "Read";
         } else {
@@ -80,7 +66,34 @@ function renderLibrary() {
     });
 }
 
-renderLibrary()
+const dialog = document.querySelector("#addBookModal");
+const form = document.querySelector("#addBookForm");
+
+form.querySelector("button[type='reset']").addEventListener("click", () => {
+    dialog.close();
+});
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const data = new FormData(form);
+    const book = Object.fromEntries(data.entries());
+
+    const newBook = new Book(
+        book.title,
+        book.author,
+        book.pages,
+        book.read === "on"
+    );
+
+    myLibrary.push(newBook);
+
+    form.reset();
+    dialog.close();
+    renderLibrary();
+});
+
+renderLibrary();
 
 function applyTheme(theme) {
     document.body.classList.remove('light', 'dark');
@@ -100,4 +113,4 @@ document.addEventListener('DOMContentLoaded', () => {
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         applyTheme(prefersDark ? 'dark' : 'light');
     }
-})
+});
