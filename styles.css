@@ -6,6 +6,7 @@ body.light {
   --card-hover: rgba(0, 0, 0, 0.15);
   --card-read: #2d6a4f;
   --card-toread: #d00000;
+  --bg: #f3ffad;
 }
 
 body.dark {
@@ -16,6 +17,7 @@ body.dark {
   --card-hover: rgba(0, 0, 0, 0.8);
   --card-read: #81c784;
   --card-toread: #ff6b6b;
+  --bg: #202b5c;
 }
 
 * {
@@ -27,8 +29,9 @@ body.dark {
 body{
     height: 100%;
     font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+    background: var(--bg);
     color: #1b1f23;
+
 }
 
 .content {
@@ -124,7 +127,6 @@ dialog#addBookModal {
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     width: 90%;
     max-width: 400px;
-    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 dialog#addBookModal h2 {
@@ -203,4 +205,25 @@ dialog#addBookModal form button[type="reset"]:hover {
 
 dialog::backdrop {
     background-color: rgba(0,0,0,0.4);
+}
+
+.deleteBook {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 50%;
+    transition: background 0.2s, transform 0.2s, color 0.2s;
+    color: #d00000; 
+}
+
+.deleteBook:hover {
+    background: rgba(208, 0, 0, 0.1);
+    transform: scale(1.1);
+    color: #ff6b6b;
+}
+
+.deleteBook svg {
+    width: 20px;
+    height: 20px;
 }
