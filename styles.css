@@ -210,8 +210,8 @@ dialog::backdrop {
 .deleteBook {
     background: none;
     border: none;
+    height: 20px;
     cursor: pointer;
-    padding: 6px;
     border-radius: 50%;
     transition: background 0.2s, transform 0.2s, color 0.2s;
     color: #d00000; 
@@ -226,4 +226,31 @@ dialog::backdrop {
 .deleteBook svg {
     width: 20px;
     height: 20px;
+}
+
+.interactions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.changeStatus {
+    background-color: #ffa500; /* bright orange */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    margin-top: 8px;
+}
+
+.changeStatus:hover {
+    background-color: #ff8c00; /* darker orange on hover */
+    transform: translateY(-2px);
+}
+
+.changeStatus:active {
+    transform: translateY(0);
 }
