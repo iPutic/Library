@@ -27,44 +27,42 @@ const mrPresident = new Book("Mr. President", "Miguel Ángel Asturias", 320, fal
 
 myLibrary.push(theHobbit, islandsInTheNet, theLightningThief, mrPresident);
 
-const libraryContainer = document.querySelector(".content");
+function renderLibrary() {
+    const libraryContainer = document.querySelector(".content");
+    libraryContainer.innerHTML = "";
 
-myLibrary.forEach(book => {
+    myLibrary.forEach(book => {
+        const card = document.createElement("div");
+        card.classList.add("card");
 
-    const card = document.createElement("div");
-    card.classList.add("card");
+        const bookTitle = document.createElement("h2");
+        bookTitle.textContent = book.title;
 
-    const bookTitle = document.createElement("h2");
-    bookTitle.textContent = book.title;
+        const bookAuthor = document.createElement("h3");
+        bookAuthor.textContent = book.author;
 
-    const bookAuthor = document.createElement("h3");
-    bookAuthor.classList.add("author");
-    bookAuthor.textContent = book.author;
+        const bookPages = document.createElement("p");
+        bookPages.textContent = `${book.pages} pages`;
 
-    const bookPages = document.createElement("p")
-    bookPages.textContent = `${book.pages} pages`;
+        const bookId = document.createElement("p");
+        bookId.textContent = `ID: ${book.id}`;
+        bookId.classList.add("id");
 
-    const bookId = document.createElement ("p")
-    bookId.textContent = `ID: ${book.id}`
-    bookId.classList.add("id")
+        const bookStatus = document.createElement("p");
+        if (book.read) {
+            bookStatus.classList.add("read");
+            bookStatus.textContent = "Read";
+        } else {
+            bookStatus.classList.add("toRead");
+            bookStatus.textContent = "Not read yet";
+        }
 
-    const bookStatus = document.createElement ("p")
-    if (book.read === true) {
-        bookStatus.classList.add("read");
-        bookStatus.textContent = "Read";
-    } else if (book.read != true) {
-        bookStatus.classList.add("toRead");
-        bookStatus.textContent = "Not read yet";
-    }
+        card.append(bookTitle, bookAuthor, bookPages, bookId, bookStatus);
+        libraryContainer.appendChild(card);
+    });
+}
 
-    card.appendChild(bookTitle);
-    card.appendChild(bookAuthor);
-    card.appendChild(bookPages);
-    card.appendChild(bookId);
-    card.appendChild(bookStatus);
-
-    libraryContainer.appendChild(card);
-})
+renderLibrary();
 
 function applyTheme(theme) {
     document.body.classList.remove('light', 'dark');
