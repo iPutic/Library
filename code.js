@@ -31,9 +31,21 @@ function renderLibrary() {
     const libraryContainer = document.querySelector(".content");
     libraryContainer.innerHTML = "";
 
+    const dialog = document.querySelector("#addBookModal");
+    const form = document.querySelector("#addBookForm");
+
     const addCard = document.createElement("div");
-    addCard.classList.add("card", "add-card");
+    addCard.classList.add("card", "addCard");
     addCard.textContent = `+`;
+
+    addCard.addEventListener("click", () => {
+        dialog.showModal();
+    });
+
+    form.querySelector("button[type='reset']").addEventListener("click", () => {
+        dialog.close();
+    });
+
     libraryContainer.appendChild(addCard);
 
     myLibrary.forEach(book => {

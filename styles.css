@@ -90,18 +90,27 @@ body{
     font-size: 0.8rem;
 }
 
-.add-card {
+.addCard {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #1e90ff;
     color: white;
-    font-size: 3rem; /* bigger + */
+    font-size: 3rem;
     cursor: pointer;
     transition: background 0.2s, transform 0.2s;
 }
 
-.add-card:hover {
+.addCard:hover {
     background-color: #0d6efd;
     transform: translateY(-3px);
+}
+
+dialog[open] {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  overflow: hidden;
 }
