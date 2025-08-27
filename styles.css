@@ -96,7 +96,7 @@ body{
     align-items: center;
     background-color: #1e90ff;
     color: white;
-    font-size: 2rem;
+    font-size: 3rem; /* bigger + */
     cursor: pointer;
     transition: background 0.2s, transform 0.2s;
 }
@@ -104,12 +104,4 @@ body{
 .add-card:hover {
     background-color: #0d6efd;
     transform: translateY(-3px);
-}
-
-.add-card button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 3rem;
-    cursor: pointer;
 }

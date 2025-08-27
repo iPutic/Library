@@ -33,13 +33,8 @@ function renderLibrary() {
 
     const addCard = document.createElement("div");
     addCard.classList.add("card", "add-card");
-    addCard.innerHTML = `<button>+</button>`;
+    addCard.textContent = `+`;
     libraryContainer.appendChild(addCard);
-
-    addCard.querySelector("button").addEventListener("click", () => {
-        addBookToLibrary();
-        renderLibrary();
-    });
 
     myLibrary.forEach(book => {
         const card = document.createElement("div");
