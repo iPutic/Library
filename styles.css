@@ -235,7 +235,7 @@ dialog::backdrop {
 }
 
 .changeStatus {
-    background-color: #ffa500; /* bright orange */
+    background-color: #ffa500;
     color: white;
     border: none;
     border-radius: 8px;
@@ -247,7 +247,7 @@ dialog::backdrop {
 }
 
 .changeStatus:hover {
-    background-color: #ff8c00; /* darker orange on hover */
+    background-color: #ff8c00;
     transform: translateY(-2px);
 }
 
